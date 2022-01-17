@@ -1,4 +1,4 @@
-# 크림 거래 데이터 수집
+# 크림 거래 데이터 수집 : 1개 상품
 
 driver = webdriver.Chrome("./chromedriver")
 driver.get("https://kream.co.kr/products/43374")
