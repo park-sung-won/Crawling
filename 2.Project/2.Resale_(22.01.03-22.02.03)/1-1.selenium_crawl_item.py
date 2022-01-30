@@ -9,10 +9,10 @@ time.sleep(0.5)
 
 # 로그인
 login = driver.find_element_by_xpath('//*[@id="__layout"]/div/div[2]/div[1]/div/div[1]/div/input')
-login.send_keys("chrisjsh07@gmail.com")
+login.send_keys("ID")
 
 password = driver.find_element_by_xpath('//*[@id="__layout"]/div/div[2]/div[1]/div/div[2]/div/input')
-password.send_keys("wjdtjdgus11!")
+password.send_keys("PASSWORD")
 
 time.sleep(0.3)
 driver.find_element_by_css_selector(".btn.full.solid").click()
