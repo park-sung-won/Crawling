@@ -1,4 +1,38 @@
 # 생성
+# *Feature Engineering
+
+# 1. Feature Selection
+# - 결과값에 유효한 영향들을 미치는 Feature 값을 임의로 선택하여 머신러닝 성능을 향상시킨다.
+# (상관 분석을 통하여 유효값의 기준 및 범위를 세울 수 있다.)
+
+ 
+# 2. Feature Nomalization(정규화)
+# - Feature마다 서로 다른 범위를 가지고 있을 때 값이 발생시키는 유효성의 차이가 생길 수 있음
+# - 차이를 최소화 하여 성능을 향상시키는 방법
+
+# 1) Standardization(표준화)
+# - 범위값(Numerical Column)의 각기 다른 범위를 정규분포표를 만들어 사용
+# from sklearn import preprocessing 
+# normalized_data=preprocessing.StandardScaler().fit_transform(data)
+
+# 2) Min-Max Scaler
+# - 최소값과 최댓값사이를 범위로 한 정규화방법 (0~1사이에 위치함)
+
+# from sklearn import preprocessing 
+# normalized_data = preprocessing.MinMaxScaler().fit_transform(data)
+
+# 3. Feature Generation
+# - 여러개의 Feature를 조합하여 새로운 Feature를 만드는 방법
+# - PolynomialFeatures : 서로 다른 Feature들 간의 곱셈으로 새로운 Feature를 만든다.
+
+# from sklearn.preprocessing import MinMaxScaler, PolynomialFeatures 
+# X=MinMaxScaler().fit_transform(Data) 
+# X=PolynomialFeatures(degree=2, include_bias=False).fit_transform(X)
+
+# 출처: https://scarlett-choi.tistory.com/45 [스칼렛의 코딩라이프]
+
+
+
 
 
 import pandas as pd
