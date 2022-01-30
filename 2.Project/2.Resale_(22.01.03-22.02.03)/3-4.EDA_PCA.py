@@ -23,3 +23,23 @@ principalDf = pd.DataFrame(data=printcipalComponents) #columns = ['principal com
 principalDf.head()
 pca.explained_variance_ratio_
 sum(pca.explained_variance_ratio_) 
+
+
+## scree_plot 
+def scree_plot(pca):
+    num_components = len(pca.explained_variance_ratio_)
+    ind = np.arange(num_components)
+    vals = pca.explained_variance_ratio_
+    
+    ax = plt.subplot()
+    cumvals = np.cumsum(vals)
+    ax.plot(ind, cumvals, color = '#b4cccc')
+    ax.bar(ind, vals, color = ['#ffa6b6', '#ffc67a',  '#b3ff70', '#66faf7', '#c591ff'])
+    for i in range(num_components):
+        ax.annotate(r"%s" % ((str(vals[i]*100)[:3])), (ind[i], vals[i]), va = "bottom", ha = "center", fontsize = 13)
+     
+    ax.set_xlabel("Number of PC")
+    ax.set_ylabel("Variance")
+    plt.title('Scree plot')
+    
+scree_plot(pca)
