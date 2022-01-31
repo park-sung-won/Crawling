@@ -1,14 +1,16 @@
 # 셀레니움 활용 
 # 페이지별 데이터 수집
 
-url = "https://www.metaverse2.com/marketplace" #수집할 URL
 
-driver = webdriver.Chrome("./chromedriver")    #chromedriver 경로 설정
+url = "https://www.metaverse2.com/marketplace"
+
+driver = webdriver.Chrome("./chromedriver")
 driver.get(url)
 
+#driver.find_element_by_css_selector(".small_button.black_button.mr5").click()
 df_all = []
-for a in trange(1,5286):  # trange : 진행률 확인 , 5286 페이지 수 설정
-    time.sleep(2)         # 동작간의 시간 텀
+for a in trange(1,5286):
+    time.sleep(2)
     elements = driver.find_element_by_class_name("column_table03").find_elements_by_class_name("table_body")
     print(len(elements))
     df_list = []
