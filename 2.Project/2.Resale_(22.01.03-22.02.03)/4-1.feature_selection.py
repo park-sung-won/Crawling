@@ -27,6 +27,8 @@
 # - LASSO = L1 regularisation
 # - RIDGE = L2 regularisation
 
+
+# 출처 : https://firework-ham.tistory.com/48
 ######################################################
 ## 1. Filtering Method
 
