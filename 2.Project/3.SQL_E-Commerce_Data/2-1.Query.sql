@@ -24,10 +24,8 @@ from
 				   inner join records as rec on p1.customer_id = rec.customer_id
                         group by p1.customer_id, rec.segment) as c
 group by c.segment;
-**
 
-
-
+------------------------------------------------------------------------------------------------------------------------------------
 -- 상품 서브 카테고리 별 평균 거래주기 (단위:일)
 
 <작성쿼리>
@@ -54,11 +52,7 @@ select c.sub_category
 		                    group by p1.customer_id, rec.sub_category) as c
 group by c.sub_category;
 
-
-
-
-
-
+------------------------------------------------------------------------------------------------------------------------------------
 -- 고객타입별 월 주문수 합계 (단위:건)
 
 <작성쿼리>
@@ -72,7 +66,7 @@ from customer_stats as c
 group by date_format(order_date, '%Y-%m')
 order by YM ;
 
-
+------------------------------------------------------------------------------------------------------------------------------------
 -- 전체 매출액 대비 매출총이익률 (단위 : %)
 
 <작성쿼리>
@@ -84,8 +78,7 @@ from customer_stats as c
 group by date_format(order_date, '%Y-%m')
 order by YM ;
 
-
-
+------------------------------------------------------------------------------------------------------------------------------------
 -- 전체 고객 대상 재구매 경험 여부
 
 <작성 쿼리>
@@ -96,8 +89,7 @@ select sum(retention_num) as '1'
 							else 0 end as retention_num
 							from customer_stats) as x;
               
-              
-              
+------------------------------------------------------------------------------------------------------------------------------------
 -- 신규 고객 유입현황
 
 1. 월별 신규 고객 유입현황
@@ -107,7 +99,6 @@ select date_format(first_order_date, '%Y-%m') as YM
 			from customer_stats
 group by date_format(first_order_date, '%Y-%m')
 order by YM;
-
 
 
 2. 고객타입별 신규고객 유입현황
