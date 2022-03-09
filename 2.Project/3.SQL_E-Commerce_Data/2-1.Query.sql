@@ -5,52 +5,58 @@ select c.segment, avg(avg_date)
 from 
                         (with p1 as(
                         select customer_id
-															, order_date
-															, next_date
-															, datediff (next_date,order_date) as count_date
-			                        from 
-			                        (select customer_id, order_date
-																		, LEAD(order_date,1) over (partition by customer_id order by customer_id,order_date) as next_date
-		                          from 
-		                          (select distinct order_date
-																		, customer_id 
-																			from records) as a)as b)
+				, order_date
+				, next_date
+				, datediff (next_date,order_date) as count_date
+			        from 
+			        (select customer_id
+				 	, order_date
+					, LEAD(order_date,1) over (partition by customer_id order by customer_id,order_date) as next_date
+		                        from 
+		                        (select distinct order_date
+						, customer_id 
+						from records) as a)as b)
                                                         
                         select rec.segment
-															, p1.customer_id
-															,  sum(count_date)/count(count_date) as avg_date
-			                        from p1
-				                        inner join records as rec on p1.customer_id = rec.customer_id
+				, p1.customer_id
+				,  sum(count_date)/count(count_date) as avg_date
+			        from p1
+				   inner join records as rec on p1.customer_id = rec.customer_id
                         group by p1.customer_id, rec.segment) as c
 group by c.segment;
-
+**
 
 
 
 -- 상품 서브 카테고리 별 평균 거래주기 (단위:일)
 
 <작성쿼리>
-select c.sub_category, avg(avg_date)
-from 
-                        (with p1 as(
-                        select customer_id
-															, order_date
-															, next_date
-															, datediff (next_date,order_date) as count_date
-                              from (select customer_id
-																					, order_date
-																					, lead(order_date,1) over (partition by customer_id order by customer_id,order_date) as next_date
-                                          from (select distinct order_date
-																											, customer_id 
-																											from records) as a)as b)
+select c.sub_category
+	, avg(avg_date)
+	from 
+        (with p1 as(
+        select customer_id
+		, order_date
+		, next_date
+		, datediff (next_date,order_date) as count_date
+                from (select customer_id
+				, order_date
+				, lead(order_date,1) over (partition by customer_id order by customer_id,order_date) as next_date
+                from (select distinct order_date
+					, customer_id 
+					from records) as a)as b)
                                                         
                         select rec.sub_category
-															, p1.customer_id
-															,  sum(count_date)/count(count_date) as avg_date
-			                        from p1
-				                        inner JOIN records as rec on p1.customer_id = rec.customer_id
+				, p1.customer_id
+				,  sum(count_date)/count(count_date) as avg_date
+			        from p1
+				   	inner JOIN records as rec on p1.customer_id = rec.customer_id
 		                    group by p1.customer_id, rec.sub_category) as c
 group by c.sub_category;
+
+
+
+
 
 
 -- 고객타입별 월 주문수 합계 (단위:건)
