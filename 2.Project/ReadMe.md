@@ -17,7 +17,7 @@
 
 ****
 
-### 3. 2020 US 사무용품 쇼핑몰 e-commerce data
+### 3. 2020 US 사무용품 쇼핑몰 e-commerce data - 2022.02.28
 
 	3-1. 개요 : 미국에서 사무용품을 전문적으로 판매하는 이커머스 쇼핑몰 데이터 분석을 기반으로 비즈니스 전략 제안
 	3-2. 출처 : https://www.kaggle.com/ammaraahmad/us-ecommerce-record-2020
